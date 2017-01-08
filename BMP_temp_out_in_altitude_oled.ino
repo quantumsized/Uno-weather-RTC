@@ -56,7 +56,6 @@ const int chipSelect = 4;
 void setup() {
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   dht.setup(dhtPin);
-  //display.display();
   delay(2000);
 
   // Clear the buffer.
@@ -259,11 +258,9 @@ void printTime() {
   //print to serial
   // Hour:Minute:Second
   // to display 12 hour time ...
-  //if(hour<10) {display.print(" ");}
   if(hour-12<10 && hour-12>0) {display.print(" ");}
   if(hour>12){
     display.print(hour-12,DEC);
-    //display.print(hour, DEC);
     tod = "PM";
   }else{
     display.print(hour, DEC);
@@ -277,10 +274,7 @@ void printTime() {
     if (second<10) { display.print("0"); }
     display.print(second, DEC);
   }
-  //display.print(" ");
   display.println(tod);
-  //display.print(" ");
-  //display.println(timeZone[DST]);
 }
 
 float getTemp() {
